@@ -7,7 +7,6 @@ namespace LedPid
     {
         private BrickletLEDStrip ledStrip;
         private byte currentBrightnes;
-        private const byte factor = 20;
 
         public LedHanlder(BrickletLEDStrip ledStrip)
         {

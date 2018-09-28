@@ -14,7 +14,7 @@ namespace LedPid
 
         private static void Main()
         {
-            double setPoint = 169;
+            double setPoint = 130;
 
             IPConnection ipcon = new IPConnection(); // Create IP connection
 
@@ -22,7 +22,7 @@ namespace LedPid
 
             var light = new BrickletAmbientLight(UidAmbientLight, ipcon);
             ledStrip = new BrickletLEDStrip(UidLedStrip, ipcon);
-            var pid = new PidCompute(0.3, 0, 0);
+            var pid = new PidCompute(0.3, 0.00001, 0);
             ledStrip.SetChannelMapping(6);
 
             var ledHandler = new LedHanlder(ledStrip);
