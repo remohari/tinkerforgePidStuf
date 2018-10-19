@@ -7,7 +7,7 @@ namespace LedPid
         private DateTime lastTime;
         private double errSum, lastErr;
         private double kp, ki, kd;
-        private double errSumMax = 2550;
+        private double errSumMax = 1025500000;
 
         public PidCompute(double kp, double ki, double kd)
         {
@@ -25,11 +25,15 @@ namespace LedPid
             /*Compute all the working error variables*/
             var error = setpoint - input;
 
-            if (errSum + (error * timeChange) < errSumMax || errSum + (error * timeChange) > -errSumMax)
+            errSum += (error * timeChange);
+            errSum = Math.Min(errSum, errSumMax);
+            errSum = Math.Max(errSum, -errSumMax);
+
+            /*if (errSum + (error * timeChange) < errSumMax || errSum + (error * timeChange) > -errSumMax)
             {
                 errSum += (error * timeChange);
-            }
-            var dErr = (error - lastErr) / timeChange;
+            }*/
+            var dErr = (error - lastErr); // timeChange;
 
             /*Remember some variables for next time*/
             lastErr = error;

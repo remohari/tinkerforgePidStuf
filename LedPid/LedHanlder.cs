@@ -26,7 +26,7 @@ namespace LedPid
             {
                 bla = 255;
             }
-            Console.Out.WriteLine($"LED Difference: {(byte)(res)}");
+            //Console.Out.WriteLine($"LED Difference: {(byte)(res)}");
             Console.Out.WriteLine($"LED new Brightnes: {bla}");
             byte size = 16;
             byte[] r = new byte[size];
